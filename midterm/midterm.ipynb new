@@ -56,37 +56,76 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 122,
+      "execution_count": 142,
       "metadata": {
-        "id": "KfGEuySJ9-o8"
+        "id": "KfGEuySJ9-o8",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "2f505538-8a83-4552-e156-ba6aa6314bd2"
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "...\n",
+            "----------------------------------------------------------------------\n",
+            "Ran 3 tests in 0.006s\n",
+            "\n",
+            "OK\n"
+          ]
+        }
+      ],
       "source": [
         "def calculate_bmi(weight_kg: float, height_m: float) -> float:\n",
-        "\n",
         "    \"\"\"\n",
-        "\n",
         "    Calculate the Body Mass Index (BMI).\n",
         "\n",
-        "\n",
-        "\n",
         "    :param weight_kg: Weight of the patient in kilograms\n",
-        "\n",
         "    :param height_m: Height of the patient in meters\n",
-        "\n",
         "    :return: Calculated BMI\n",
-        "\n",
         "    :raises ValueError: if weight or height are non-positive\n",
         "\n",
+        "    >>> calculate_bmi(70, 1.75)\n",
+        "    22.857142857142858\n",
+        "\n",
+        "    >>> calculate_bmi(0, 1.75)\n",
+        "    Traceback (most recent call last):\n",
+        "        ...\n",
+        "    ValueError: Weight and height must be positive values.\n",
+        "\n",
+        "    >>> calculate_bmi(70, -1.75)\n",
+        "    Traceback (most recent call last):\n",
+        "        ...\n",
+        "    ValueError: Weight and height must be positive values.\n",
         "    \"\"\"\n",
-        "\n",
         "    if weight_kg <= 0 or height_m <= 0:\n",
-        "\n",
         "        raise ValueError(\"Weight and height must be positive values.\")\n",
         "\n",
+        "    return weight_kg / (height_m ** 2)\n",
         "\n",
+        "if __name__ == \"__main__\":\n",
+        "    import doctest\n",
+        "    doctest.testmod()\n",
+        "import unittest\n",
         "\n",
-        "    return weight_kg / (height_m ** 2)"
+        "class TestBMICalculation(unittest.TestCase):\n",
+        "    def test_bmi_valid(self):\n",
+        "        self.assertAlmostEqual(calculate_bmi(70, 1.75), 22.857142857142858)\n",
+        "\n",
+        "    def test_bmi_invalid_weight(self):\n",
+        "        with self.assertRaises(ValueError):\n",
+        "            calculate_bmi(0, 1.75)\n",
+        "\n",
+        "    def test_bmi_invalid_height(self):\n",
+        "        with self.assertRaises(ValueError):\n",
+        "            calculate_bmi(70, -1.75)\n",
+        "\n",
+        "# Modified part: Run tests with unittest.main() using argv to avoid SystemExit in Jupyter\n",
+        "if __name__ == \"__main__\":\n",
+        "    import sys\n",
+        "    unittest.main(argv=['first-arg-is-ignored'], exit=False) # exit=False prevents sys.exit()\n"
       ]
     },
     {
