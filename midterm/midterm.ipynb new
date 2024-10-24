@@ -467,7 +467,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 130,
+      "execution_count": 140,
       "metadata": {
         "id": "QFJFa6KG9-o_"
       },
@@ -603,6 +603,7 @@
         "    # Write output files\n",
         "    write_patient_output(patient_output_file, patients)\n",
         "    write_hospital_output(hospital_output_file, hospitals, beds_per_hospital)\n",
+        "\n",
         "\n",
         "\n",
         "\n"
