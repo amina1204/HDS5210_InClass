@@ -1,0 +1,5 @@
+Your midterm presents a big problem - I am not sure that you understand how functions work. 
+You created in the first steps mostly correct implementations of the bode scores. 
+Your Dyspnea is slightly off, but within reason.
+Then you created dummy implementations of the functions in the last steps that overrode the correct implementations.
+So your data in the files is not remotely close.
